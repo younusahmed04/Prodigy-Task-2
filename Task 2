@@ -1,0 +1,37 @@
+
+def encrypt_image(path, key):
+    try:
+        fin = open(path, 'rb')
+        image = fin.read()
+        fin.close()
+        image = bytearray(image)
+        for index, values in enumerate(image):
+            image[index] = values ^ key
+        fin = open(path, 'wb')
+        fin.write(image)
+        fin.close()
+        print('Encryption Done...')
+    except Exception:
+        print('Error caught : ', Exception.__name__)
+
+def decrypt_image(path, key):
+    try:
+        fin = open(path, 'rb')
+        image = fin.read()
+        fin.close()
+        image = bytearray(image)
+        for index, values in enumerate(image):
+            image[index] = values ^ key
+        fin = open(path, 'wb')
+        fin.write(image)
+        fin.close()
+        print('Decryption Done...')
+    except Exception:
+        print('Error caught : ', Exception.__name__)
+
+# Example usage:
+path = input('Enter path of Image: ')
+key = int(input('Enter Key for encryption of Image: '))
+encrypt_image(path, key)
+Encryption Done...
+ 
